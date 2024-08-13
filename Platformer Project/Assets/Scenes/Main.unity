@@ -55360,7 +55360,7 @@ Transform:
   m_GameObject: {fileID: 2132668591}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -14.89, y: 12.02, z: 0}
+  m_LocalPosition: {x: 2.59, y: 12.06, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -55386,6 +55386,8 @@ MonoBehaviour:
   idleStateData: {fileID: 11400000, guid: a620914869db96645a9e5294ebdd6bdc, type: 2}
   moveStateData: {fileID: 11400000, guid: ab5a02f2d1d9cff498d857e104a6d042, type: 2}
   playerDetectedData: {fileID: 11400000, guid: 65c875e1c2b79624bb8995865b2e2dff, type: 2}
+  chargeStateData: {fileID: 11400000, guid: 886b057884216bf42a989cdb1eaa4ba9, type: 2}
+  lookForPlayerStateData: {fileID: 11400000, guid: 25ae6fdb16d3fd448a949862977f5805, type: 2}
 --- !u!1001 &1378863048171770669
 PrefabInstance:
   m_ObjectHideFlags: 0
