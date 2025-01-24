@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMoveState : PlayerGraundedStates
+public class PlayerMoveState : PlayerGroundedStates
 {
     public PlayerMoveState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string animBoolName) : base(player, stateMachine, playerData, animBoolName)
     {
@@ -27,11 +27,19 @@ public class PlayerMoveState : PlayerGraundedStates
     {
         base.LogicUpdate();
 
-        player.CheckIfShoulFlip(xInput);
-        player.SetVelocityX(playerData.movementVelocity * xInput);
-        if(xInput == 0f)
+        core.Movement.CheckIfShouldFlip(xInput);
+        core.Movement.SetVelocityX(playerData.movementVelocity * xInput);
+
+        if (!isExitingState)
         {
-            stateMachine.ChangeState(player.IdleState);
+            if (xInput == 0f)
+            {
+                stateMachine.ChangeState(player.IdleState);
+            }
+            else if (yInput == -1f)
+            {
+                stateMachine.ChangeState(player.CrouchMoveState);
+            }
         }
     }
 

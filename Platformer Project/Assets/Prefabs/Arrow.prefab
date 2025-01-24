@@ -164,5 +164,5 @@ MonoBehaviour:
     m_Bits: 256
   whatIsPlayer:
     serializedVersion: 2
-    m_Bits: 2048
+    m_Bits: 0
   damagePosition: {fileID: 4260572090318083240}

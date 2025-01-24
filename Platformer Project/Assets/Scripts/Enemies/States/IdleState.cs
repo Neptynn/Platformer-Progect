@@ -28,7 +28,7 @@ public class IdleState : State
     {
         base.Enter();
 
-        entity.SetVelocity(0f);
+        core.Movement.SetVelocityX(0f);
         isIdleTimeOver = false;
         SetRandomTime();
     }
@@ -39,7 +39,7 @@ public class IdleState : State
 
         if(flipAfterIdle)
         {
-            entity.Flip();
+            core.Movement.Flip();
         }
     }
 
@@ -47,7 +47,9 @@ public class IdleState : State
     {
         base.LogicUpdate();
 
-        if(Time.time >= startTime + idleTime)
+        core.Movement.SetVelocityX(0f);
+
+        if (Time.time >= startTime + idleTime)
         {
             isIdleTimeOver = true;
         }

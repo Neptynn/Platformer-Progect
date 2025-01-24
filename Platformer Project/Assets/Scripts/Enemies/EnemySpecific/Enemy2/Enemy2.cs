@@ -39,9 +39,9 @@ public class Enemy2 : Entity
         rangedAttackPosition;
     
 
-    public override void Start()
+    public override void Awake()
     {
-        base.Start();
+        base.Awake();
 
         moveState = new E2_MoveState(this, stateMachine, "move", moveStateData, this);
         idleState = new E2_IdleState(this, stateMachine, "idle", idleStateData, this);
@@ -52,31 +52,11 @@ public class Enemy2 : Entity
         deadState = new E2_DeadState(this, stateMachine, "dead", deadStateData, this);
         dodgeState = new E2_DodgeState(this, stateMachine, "dodge", dodgeStateData, this);
         rangeAttackState = new E2_RangeAttackState(this, stateMachine, "rangedAttack", rangedAttackPosition, rangeAttackStateData, this);
-
-        stateMachine.Initialize(moveState);
     }
 
-    public override void Damage(AttackDetails attackDetails)
+    private void Start()
     {
-        base.Damage(attackDetails);
-
-        if(isDead)
-        {
-            stateMachine.ChangeState(deadState);
-        }
-        else if( isStunned && stateMachine.currentState != stunState)
-        {
-            stateMachine.ChangeState(stunState);
-        }
-        else if(CheckPlayerInMinAgroRange())
-        {
-            stateMachine.ChangeState(rangeAttackState);
-        }
-        else if(!CheckPlayerInMinAgroRange())
-        {
-            lookForPlayerState.SetTurnImmidiatly(true);
-            stateMachine.ChangeState(lookForPlayerState);
-        }
+        stateMachine.Initialize(moveState);
     }
 
     public override void OnDrawGizmos()
